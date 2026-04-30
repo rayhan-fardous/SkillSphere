@@ -1,8 +1,11 @@
+import Hero from "@/components/Hero";
+import PopularCourses from "@/components/PopularCourses";
 
 export default function Home() {
   return (
-    <main>
-      <div>Hello World!</div>
-    </main>
+    <div className="flex flex-col pb-16">
+      <Hero/>
+      <PopularCourses/>
+    </div>
   );
 }

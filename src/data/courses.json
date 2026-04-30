@@ -7,7 +7,7 @@
     "rating": 4.9,
     "level": "Beginner",
     "description": "Learn full-stack web development from scratch with hands-on projects and interactive coding exercises.",
-    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "image": "/Jhankar-Mahbub.jpg",
     "category": "Development"
   },
   {
@@ -18,7 +18,7 @@
     "rating": 4.8,
     "level": "Intermediate",
     "description": "Learn modern UI/UX design principles, wireframing, prototyping, and user-centered design.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+    "image": "/Sarah-Ahmed.png",
     "category": "Design"
   },
   {
@@ -29,7 +29,7 @@
     "rating": 4.7,
     "level": "Beginner",
     "description": "Master SEO, social media strategies, email marketing, and online branding techniques.",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    "image": "/David-Miller.jpg",
     "category": "Marketing"
   },
   {
@@ -37,10 +37,10 @@
     "title": "React.js Advanced Concepts",
     "instructor": "Michael Johnson",
     "duration": "22 hours",
-    "rating": 4.9,
+    "rating": 4.8,
     "level": "Advanced",
     "description": "Deep dive into React hooks, context API, performance optimization, and reusable components.",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+    "image": "/Michael-Johnson.jpg",
     "category": "Development"
   },
   {
@@ -48,10 +48,10 @@
     "title": "Graphic Design for Beginners",
     "instructor": "Emily Carter",
     "duration": "12 hours",
-    "rating": 4.6,
+    "rating": 4.9,
     "level": "Beginner",
     "description": "Learn typography, color theory, branding, and graphic design basics using industry tools.",
-    "image": "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+    "image": "/Emily-Carter.jpg",
     "category": "Design"
   },
   {
@@ -62,7 +62,7 @@
     "rating": 4.8,
     "level": "Intermediate",
     "description": "Analyze, visualize, and interpret data using Python, Pandas, and Matplotlib.",
-    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "image": "/Robert-Wilson.jpg",
     "category": "Data Science"
   }
 ]
