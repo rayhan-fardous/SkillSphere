@@ -1,8 +1,16 @@
 import Link from "next/link";
 import React from "react";
+import { cookies } from "next/headers";
 
-const Navbar = () => {
-  const isLoggedIn = false;
+const Navbar = async() => {
+  const cookieStore = await cookies();
+  const isLoggedIn = cookieStore.get("auth")?.value === "true";
+
+  async function logoutAction() {
+    "use server";
+    const cookieStore = await cookies();
+    cookieStore.delete("auth");
+  }
   return (
     <div className="navbar bg-base-100 shadow-sm px-8 sticky top-0 z-50">
       <div className="flex-1">
@@ -36,13 +44,17 @@ const Navbar = () => {
                 </Link>
               </li>
               <li><a>Settings</a></li>
-              <li><button className="text-error">Logout</button></li>
+              <li>
+                <form action={logoutAction}>
+                  <button type="submit" className="text-error w-full text-left">Logout</button>
+                </form>
+              </li>
             </ul>
           </div>
         ) : (
           <div className="flex gap-2">
-            <button className="btn btn-ghost">Login</button>
-            <button className="btn btn-primary">Register</button>
+            <Link href="/login" className="btn btn-ghost">Login</Link>
+            <Link href="/login" className="btn btn-primary text-white">Register</Link>
           </div>
         )}
       </div>

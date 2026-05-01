@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 import Image from 'next/image';
 import courses from "@/data/courses.json";
 import { FaArrowRight, FaStar } from 'react-icons/fa';
@@ -38,10 +39,10 @@ const PopularCourses = () => {
                 <span className="font-semibold">{course.rating}</span>
               </div>
               <div className="card-actions justify-end mt-4">
-                <button className="btn btn-outline flex items-center btn-primary w-full group">
+                <Link href={`/courses/${course.id}`} className="btn btn-outline flex items-center btn-primary w-full group">
                   View Details
                   <FaArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform"/>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
