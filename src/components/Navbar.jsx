@@ -34,7 +34,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="User Avatar"
-                  src={session?.user?.image || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                  src={session?.user?.image || "https://images.unsplash.com/vector-1742875355318-00d715aec3e8?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM2fHx8ZW58MHx8fHx8"}
                 />
               </div>
             </div>

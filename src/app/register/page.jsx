@@ -30,7 +30,7 @@ const RegisterPage = () => {
     if (error) {
       toast.error(error.message || "Failed to register.");
     } else {
-      toast.success("Account created successfully!");
+      toast.success("Account created successfull!");
       router.push("/login");
     }
   };

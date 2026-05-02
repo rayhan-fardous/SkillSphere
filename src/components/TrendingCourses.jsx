@@ -5,7 +5,7 @@ import courses from "@/data/courses.json";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
 const TrendingCourses = () => {
-  const trendingCourses = [...courses].slice(0, 3);
+  const trendingCourses = [...courses].reverse().slice(0, 3);
   return (
     <section className="py-16 px-8 max-w-7xl mx-auto w-full bg-base-200/50 rounded-3xl mt-8 mb-4">
       <div className="flex justify-center items-center gap-3 mb-10">
