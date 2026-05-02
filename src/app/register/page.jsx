@@ -5,29 +5,33 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-const LoginPage = () => {
-
+const RegisterPage = () => {
   const router = useRouter();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    const { data, error } = await authClient.signIn.email({
+    
+    const { data, error } = await authClient.signUp.email({
+      name,
       email,
       password,
+      image: photoUrl
     });
-    setLoading(false);
     
+    setLoading(false);
+
     if (error) {
-      setError(error.message || "Failed to log in.");
+      setError(error.message || "Failed to register.");
     } else {
-      router.push("/");
-      router.refresh();
+      router.push("/login");
     }
   };
 
@@ -44,31 +48,40 @@ const LoginPage = () => {
         <div className="card-body">
           <div className="mb-4 flex justify-center">
              <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
              </svg>
           </div>
-          <h2 className="text-3xl font-bold mb-2 text-center">Login</h2>
-          <p className="text-gray-500 mb-6 text-center">Log in to access your secure courses</p>
-          
+          <h2 className="text-3xl font-bold mb-2 text-center">Register</h2>
+          <p className="text-gray-500 mb-6 text-center">Create a new account</p>
+
           {error && (
             <div className="alert alert-error text-sm py-2 mb-4">
               <span>{error}</span>
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <form onSubmit={handleRegister} className="flex flex-col gap-4">
+            <div className="form-control">
+              <label className="label"><span className="label-text">Name</span></label>
+              <input type="text" placeholder="John Doe" className="input input-bordered" value={name} onChange={(e) => setName(e.target.value)} required />
+            </div>
             <div className="form-control">
               <label className="label"><span className="label-text">Email</span></label>
               <input type="email" placeholder="email@example.com" className="input input-bordered" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </div>
+            <div className="form-control">
+              <label className="label"><span className="label-text">Photo URL</span></label>
+              <input type="url" placeholder="https://example.com/photo.jpg" className="input input-bordered" value={photoUrl} onChange={(e) => setPhotoUrl(e.target.value)} />
             </div>
             <div className="form-control">
               <label className="label"><span className="label-text">Password</span></label>
               <input type="password" placeholder="••••••••" className="input input-bordered" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
             <button type="submit" className="btn btn-primary w-full text-white mt-2" disabled={loading}>
-              {loading ? <span className="loading loading-spinner loading-sm"></span> : "Log In"}
+              {loading ? <span className="loading loading-spinner loading-sm"></span> : "Register"}
             </button>
           </form>
+
           <div className="divider">OR</div>
 
           <button onClick={handleGoogleLogin} className="btn btn-outline w-full gap-2">
@@ -82,7 +95,7 @@ const LoginPage = () => {
           </button>
 
           <p className="text-center mt-6 text-sm text-gray-600">
-            Don't have an account? <Link href="/register" className="link link-primary font-semibold">Register</Link>
+            Already have an account? <Link href="/login" className="link link-primary font-semibold">Login</Link>
           </p>
         </div>
       </div>
@@ -90,4 +103,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

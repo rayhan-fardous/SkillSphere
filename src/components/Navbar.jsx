@@ -1,16 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
-import { cookies } from "next/headers";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
-const Navbar = async() => {
-  const cookieStore = await cookies();
-  const isLoggedIn = cookieStore.get("auth")?.value === "true";
+const Navbar = () => {
+  const router = useRouter();
+  const { data: session } = authClient.useSession();
+  const isLoggedIn = !!session;
 
-  async function logoutAction() {
-    "use server";
-    const cookieStore = await cookies();
-    cookieStore.delete("auth");
-  }
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.refresh();
+  };
+
   return (
     <div className="navbar bg-base-100 shadow-sm px-8 sticky top-0 z-50">
       <div className="flex-1">
@@ -30,7 +34,7 @@ const Navbar = async() => {
               <div className="w-10 rounded-full">
                 <img
                   alt="User Avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={session?.user?.image || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
                 />
               </div>
             </div>
@@ -38,6 +42,10 @@ const Navbar = async() => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-lg"
             >
+              <li className="p-2 border-b border-base-200">
+                <p className="font-bold text-sm truncate">{session?.user?.name}</p>
+                <p className="text-xs text-gray-500 truncate">{session?.user?.email}</p>
+              </li>
               <li>
                 <Link href="/profile" className="justify-between">
                   Profile
@@ -45,16 +53,14 @@ const Navbar = async() => {
               </li>
               <li><a>Settings</a></li>
               <li>
-                <form action={logoutAction}>
-                  <button type="submit" className="text-error w-full text-left">Logout</button>
-                </form>
+                <button onClick={handleLogout} className="text-error w-full text-left">Logout</button>
               </li>
             </ul>
           </div>
         ) : (
           <div className="flex gap-2">
             <Link href="/login" className="btn btn-ghost">Login</Link>
-            <Link href="/login" className="btn btn-primary text-white">Register</Link>
+            <Link href="/register" className="btn btn-primary text-white">Register</Link>
           </div>
         )}
       </div>
