@@ -18,29 +18,29 @@
     "rating": 4.8,
     "level": "Intermediate",
     "description": "Learn modern UI/UX design principles, wireframing, prototyping, and user-centered design.",
-    "image": "/Sarah-Ahmed.png",
+    "image": "/Sarah-Ahmed.jpg",
     "category": "Design"
   },
   {
     "id": 3,
     "title": "Digital Marketing Essentials",
-    "instructor": "David Miller",
+    "instructor": "Abdullah Kaosar",
     "duration": "15 hours",
     "rating": 4.7,
     "level": "Beginner",
     "description": "Master SEO, social media strategies, email marketing, and online branding techniques.",
-    "image": "/David-Miller.jpg",
+    "image": "/Abdullah-Kaosar.jpg",
     "category": "Marketing"
   },
   {
     "id": 4,
     "title": "React.js Advanced Concepts",
-    "instructor": "Michael Johnson",
+    "instructor": "Sumit Saha",
     "duration": "22 hours",
     "rating": 4.8,
     "level": "Advanced",
     "description": "Deep dive into React hooks, context API, performance optimization, and reusable components.",
-    "image": "/Michael-Johnson.jpg",
+    "image": "/Sumit-Saha.jpg",
     "category": "Development"
   },
   {
@@ -57,12 +57,12 @@
   {
     "id": 6,
     "title": "Python for Data Analysis",
-    "instructor": "Robert Wilson",
+    "instructor": "Eshan Ahmed Ahad",
     "duration": "25 hours",
     "rating": 4.8,
     "level": "Intermediate",
     "description": "Analyze, visualize, and interpret data using Python, Pandas, and Matplotlib.",
-    "image": "/Robert-Wilson.jpg",
+    "image": "/Eshan-Ahmed-Ahad.png",
     "category": "Data Science"
   }
 ]

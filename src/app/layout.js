@@ -1,11 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { Outfit } from "next/font/google";
 
-const outfit = Outfit({
+export const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-outfit",
@@ -21,9 +20,9 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       data-theme="light"
-      className={outfit.variable}
+      className={`h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className={`${outfit.className} min-h-full flex flex-col`}>
         <Toaster position="top-center" />
         <Navbar />
         <main>{children}</main>
